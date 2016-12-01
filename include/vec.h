@@ -145,7 +145,7 @@ GLfloat dot( const vec2& u, const vec2& v ) {
 
 inline
 GLfloat length( const vec2& v ) {
-    return std::sqrt( dot(v,v) );
+    return sqrt( dot(v,v) );
 }
 
 inline
@@ -285,7 +285,7 @@ GLfloat dot( const vec3& u, const vec3& v ) {
 
 inline
 GLfloat length( const vec3& v ) {
-    return std::sqrt( dot(v,v) );
+    return sqrt( dot(v,v) );
 }
 
 inline
@@ -440,7 +440,7 @@ GLfloat dot( const vec4& u, const vec4& v ) {
 
 inline
 GLfloat length( const vec4& v ) {
-    return std::sqrt( dot(v,v) );
+    return sqrt( dot(v,v) );
 }
 
 inline

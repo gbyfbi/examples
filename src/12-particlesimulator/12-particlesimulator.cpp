@@ -110,8 +110,7 @@ void ComputeParticleSimulator::Initialize(const char * title)
     compute_prog = glCreateProgram();
 
     static const char compute_shader_source[] =
-        STRINGIZE(
-#version 430 core\n
+R"(#version 430 core
 
 layout (std140, binding = 0) uniform attractor_block
 {
@@ -150,8 +149,7 @@ void main(void)
 
     imageStore(position_buffer, int(gl_GlobalInvocationID.x), pos);
     imageStore(velocity_buffer, int(gl_GlobalInvocationID.x), vel);
-}
-        );
+})";
 
     vglAttachShaderSource(compute_prog, GL_COMPUTE_SHADER, compute_shader_source);
 

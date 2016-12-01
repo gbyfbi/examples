@@ -78,6 +78,9 @@ set(EXAMPLES
   12-raytracer
   12-simplecompute
 )
+find_package(glfw3)
+message(STATUS ${glfw3_LIBRARIES})
+include_directories(${glfw3_INCLUDE_DIRS})
 
 find_package(OpenMP)
 if (OPENMP_FOUND)
@@ -99,9 +102,14 @@ IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 ENDIF (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 include_directories( include )
-include_directories(lib/glfw/include)
+#include_directories(lib/glfw/include)
 
-add_subdirectory(lib/glfw)
+#add_subdirectory(lib/glfw)
 
 ADD_CUSTOM_TARGET(debug ${CMAKE_COMMAND} -DCMAKE_BUILD_TYPE:STRING=Debug ${PROJECT_SOURCE_DIR})
 ADD_CUSTOM_TARGET(release ${CMAKE_COMMAND} -DCMAKE_BUILD_TYPE:STRING=Release ${PROJECT_SOURCE_DIR})
+
+
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
+set_source_files_properties("lib/vdds.cpp" COMPILE_FLAGS "-fpermissive")
+set(CMAKE_VERBOSE_MAKEFILE on)
